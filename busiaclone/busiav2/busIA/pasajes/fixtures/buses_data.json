@@ -1,0 +1,48 @@
+[
+    {
+        "model": "pasajes.linea",
+        "pk": 1,
+        "fields": {
+            "nombre": "Línea Santiago-Concepción",
+            "nombre_empresa": "Pullman Bus",
+            "origen": 1,
+            "destino": 4,
+            "duracion": "06:00:00",
+            "precio_base": "15000.00",
+            "activa": true
+        }
+    },
+    {
+        "model": "pasajes.linea",
+        "pk": 2,
+        "fields": {
+            "nombre": "Línea Santiago-Valparaíso",
+            "nombre_empresa": "Tur Bus",
+            "origen": 1,
+            "destino": 2,
+            "duracion": "01:30:00",
+            "precio_base": "8000.00",
+            "activa": true
+        }
+    },
+    {
+        "model": "pasajes.bus",
+        "pk": 1,
+        "fields": {
+            "linea": 1,
+            "numero": "BUS-001",
+            "capacidad": 40,
+            "activo": true
+        }
+    },
+    {
+        "model": "pasajes.bus",
+        "pk": 2,
+        "fields": {
+            "linea": 2,
+            "numero": "BUS-002",
+            "capacidad": 40,
+            "activo": true
+        }
+    }
+]

@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">Dashboard</h1>
+
+    {% if messages %}
+    <div class="messages mb-4">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Información del usuario -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Información Personal</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Nombre:</strong> {{ user.nombre }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    {% if user.telefono %}
+                    <p><strong>Teléfono:</strong> {{ user.telefono }}</p>
+                    {% endif %}
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="{% url 'usuarios:perfil' %}" class="btn btn-secondary me-2">
+                        <i class="fas fa-user-edit"></i> Editar Perfil
+                    </a>
+                    <a href="{% url 'usuarios:cambiar_password' %}" class="btn btn-primary">
+                        <i class="fas fa-key"></i> Cambiar Contraseña
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Próximos Viajes -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Próximos Viajes</h5>
+        </div>
+        <div class="card-body">
+            {% if reservas_activas %}
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Origen</th>
+                                <th>Destino</th>
+                                <th>Asiento</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reserva in reservas_activas %}
+                            <tr>
+                                <td>{{ reserva.fecha_viaje|date:"d/m/Y" }}</td>
+                                <td>{{ reserva.asiento.bus.linea.origen }}</td>
+                                <td>{{ reserva.asiento.bus.linea.destino }}</td>
+                                <td>{{ reserva.asiento }}</td>
+                                <td>
+                                    <span class="badge {% if reserva.estado == 'cancelada' or reserva.estado == 'confirmada' %}bg-dark{% else %}bg-{{ reserva.get_estado_display|lower }}{% endif %}">
+                                        {{ reserva.get_estado_display }}
+                                    </span>
+                                </td>
+                                <td>
+                                    {% if reserva.estado != 'cancelada' and reserva.fecha_viaje > now %}
+                                    <form method="post" action="{% url 'usuarios:cancelar_reserva' reserva.id %}" 
+                                          class="d-inline" onsubmit="return confirm('¿Estás seguro de cancelar esta reserva?');">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-times"></i> Cancelar
+                                        </button>
+                                    </form>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-muted mb-0">No tienes viajes próximos.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Historial de Viajes -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Historial de Viajes</h5>
+        </div>
+        <div class="card-body">
+            {% if historial_viajes %}
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Origen</th>
+                                <th>Destino</th>
+                                <th>Asiento</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reserva in historial_viajes %}
+                            <tr>
+                                <td>{{ reserva.fecha_viaje|date:"d/m/Y" }}</td>
+                                <td>{{ reserva.asiento.bus.linea.origen }}</td>
+                                <td>{{ reserva.asiento.bus.linea.destino }}</td>
+                                <td>{{ reserva.asiento }}</td>
+                                <td>
+                                    <span class="badge {% if reserva.estado == 'cancelada' or reserva.estado == 'confirmada' %}bg-dark{% else %}bg-{{ reserva.get_estado_display|lower }}{% endif %}">
+                                        {{ reserva.get_estado_display }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-muted mb-0">No tienes viajes anteriores.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,394 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Comprar Pasajes{% endblock %}
+
+{% block extra_css %}
+<!-- Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+.bus-layout {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.grid-asientos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.asiento {
+    aspect-ratio: 1;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.asiento.disponible:hover {
+    border-color: #28a745;
+    background-color: #e8f5e9;
+}
+
+.asiento.seleccionado {
+    border-color: #28a745;
+    background-color: #28a745;
+    color: white;
+}
+
+.asiento.ocupado {
+    border-color: #dc3545;
+    background-color: #dc3545;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.pasillo {
+    grid-column: span 2;
+    border: none;
+    background: transparent;
+}
+
+.viaje-card {
+    transition: all 0.3s ease;
+}
+
+.viaje-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.select2-container {
+    width: 100% !important;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Comprar Pasajes</h1>
+    
+    <!-- Formulario de búsqueda -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form id="buscarViajesForm" class="row g-3">
+                {% csrf_token %}
+                <div class="col-md-4">
+                    <label for="origen" class="form-label">Ciudad de Origen</label>
+                    <select class="form-control select2" id="origen" name="origen" required>
+                        <option value="">Seleccione origen</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="destino" class="form-label">Ciudad de Destino</label>
+                    <select class="form-control select2" id="destino" name="destino" required>
+                        <option value="">Seleccione destino</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="fecha" class="form-label">Fecha de Viaje</label>
+                    <input type="date" class="form-control" id="fecha" required min="{{ fecha_minima }}">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Buscar Viajes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Resultados de búsqueda -->
+    <div id="resultadosBusqueda" style="display: none;">
+        <h2 class="mb-3">Viajes Disponibles</h2>
+        <div class="row" id="listaViajes">
+            <!-- Los viajes se cargarán aquí dinámicamente -->
+        </div>
+    </div>
+    
+    <!-- Modal de selección de asientos -->
+    <div class="modal fade" id="asientosModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Seleccionar Asiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-info-viaje" class="mb-4"></div>
+                    <div class="row" id="grid-asientos">
+                        <!-- Los asientos se cargarán aquí dinámicamente -->
+                    </div>
+                    <div class="mt-3">
+                        <p><strong>Leyenda:</strong></p>
+                        <div class="d-flex gap-3">
+                            <div>
+                                <span class="btn btn-outline-success btn-sm">01</span> Disponible
+                            </div>
+                            <div>
+                                <span class="btn btn-outline-warning btn-sm">01★</span> Premium
+                            </div>
+                            <div>
+                                <span class="btn btn-danger btn-sm disabled">01</span> Ocupado
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Configuración de Select2 para origen y destino
+    $('.select2').select2({
+        ajax: {
+            url: '{% url "pasajes:buscar_ciudades" %}',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    q: params.term
+                };
+            },
+            processResults: function(data) {
+                return {
+                    results: data.results
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 2,
+        placeholder: 'Buscar ciudad...',
+        language: 'es'
+    });
+
+    // Variables globales
+    let asientoSeleccionado = null;
+    let modalAsientos = new bootstrap.Modal(document.getElementById('asientosModal'));
+
+    // Formulario de búsqueda
+    document.getElementById('buscarViajesForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const origen = document.getElementById('origen').value;
+        const destino = document.getElementById('destino').value;
+        const fecha = document.getElementById('fecha').value;
+
+        if (!origen || !destino || !fecha) {
+            alert('Por favor complete todos los campos');
+            return;
+        }
+
+        try {
+            const response = await fetch(`{% url 'pasajes:buscar_viajes' %}?origen=${origen}&destino=${destino}&fecha=${fecha}`, {
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            });
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Error al buscar viajes');
+            }
+
+            mostrarResultados(data.viajes);
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al buscar viajes: ' + error.message);
+        }
+    });
+
+    function mostrarResultados(viajes) {
+        const container = document.getElementById('listaViajes');
+        container.innerHTML = '';
+
+        if (viajes.length === 0) {
+            container.innerHTML = `
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        No hay viajes disponibles para la fecha seleccionada.
+                    </div>
+                </div>
+            `;
+            return;
+        }
+
+        viajes.forEach(viaje => {
+            const card = document.createElement('div');
+            card.className = 'col-md-6 mb-4';
+            card.innerHTML = `
+                <div class="card viaje-card">
+                    <div class="card-body">
+                        <h5 class="card-title">${viaje.empresa}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            ${viaje.origen} → ${viaje.destino}
+                        </h6>
+                        <p class="card-text">
+                            <strong>Hora de salida:</strong> ${viaje.hora_salida}<br>
+                            <strong>Duración:</strong> ${viaje.duracion}<br>
+                            <strong>Precio:</strong> $${viaje.precio.toLocaleString()}<br>
+                            <strong>Asientos disponibles:</strong> ${viaje.asientos_disponibles}
+                        </p>
+                        <button class="btn btn-primary" onclick="seleccionarViaje('${viaje.viaje_id}')">
+                            Seleccionar Asientos
+                        </button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        document.getElementById('resultadosBusqueda').style.display = 'block';
+    }
+
+    // Función para seleccionar viaje
+    window.seleccionarViaje = async function(viajeId) {
+        try {
+            const response = await fetch(`/pasajes/api/asientos/${viajeId}/`, {
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            });
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Error al obtener asientos');
+            }
+
+            // Mostrar información del viaje
+            document.getElementById('modal-info-viaje').innerHTML = `
+                <div class="alert alert-info">
+                    <h6 class="mb-1">${data.viaje.empresa}</h6>
+                    <p class="mb-1">${data.viaje.origen} → ${data.viaje.destino}</p>
+                    <p class="mb-0">Salida: ${data.viaje.fecha_salida}</p>
+                </div>
+            `;
+
+            mostrarAsientos(data.asientos);
+            modalAsientos.show();
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al cargar asientos: ' + error.message);
+        }
+    };
+
+    function mostrarAsientos(asientos) {
+        const container = document.getElementById('grid-asientos');
+        container.innerHTML = '<div class="bus-layout"><div class="grid-asientos">';
+
+        // Ordenar asientos por número
+        asientos.sort((a, b) => a.numero - b.numero);
+
+        // Crear el mapa de asientos
+        for (let i = 0; i < asientos.length; i++) {
+            const asiento = asientos[i];
+            const esPasillo = (i % 4 === 1); // Después del segundo asiento
+
+            if (esPasillo) {
+                container.querySelector('.grid-asientos').innerHTML += '<div class="pasillo"></div>';
+            }
+
+            const clases = ['asiento'];
+            if (!asiento.ocupado) {
+                clases.push('disponible');
+            } else {
+                clases.push('ocupado');
+            }
+
+            const numeroAsiento = asiento.numero.toString().padStart(2, '0');
+            const tipoAsiento = asiento.tipo === 'premium' ? '★' : '';
+
+            container.querySelector('.grid-asientos').innerHTML += `
+                <div class="${clases.join(' ')}" 
+                     data-asiento-id="${asiento.id}"
+                     onclick="${!asiento.ocupado ? 'seleccionarAsiento(event)' : ''}"
+                     title="Asiento ${numeroAsiento} ${asiento.tipo}"
+                >
+                    ${numeroAsiento}${tipoAsiento}
+                </div>
+            `;
+        }
+
+        container.querySelector('.grid-asientos').innerHTML += '</div></div>';
+    }
+
+    // Función para seleccionar asiento
+    window.seleccionarAsiento = function(event) {
+        const asiento = event.target;
+        
+        // Deseleccionar asiento anterior si existe
+        const asientoAnterior = document.querySelector('.asiento.seleccionado');
+        if (asientoAnterior) {
+            asientoAnterior.classList.remove('seleccionado');
+        }
+        
+        // Seleccionar nuevo asiento
+        asiento.classList.add('seleccionado');
+        asientoSeleccionado = {
+            id: asiento.dataset.asientoId,
+            numero: asiento.textContent.replace('★', '')
+        };
+
+        // Mostrar botón de confirmación
+        const footer = document.querySelector('.modal-footer');
+        footer.innerHTML = `
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="crearReserva()">
+                Confirmar Asiento ${asientoSeleccionado.numero}
+            </button>
+        `;
+    }
+
+    // Función para crear reserva
+    window.crearReserva = async function() {
+        try {
+            const fecha = document.getElementById('fecha').value;
+            const response = await fetch('{% url "pasajes:crear_reserva" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    asiento_id: asientoSeleccionado.id,
+                    fecha_viaje: fecha
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Error al crear reserva');
+            }
+
+            alert('¡Reserva creada con éxito!');
+            modalAsientos.hide();
+            window.location.href = '{% url "pasajes:mis_viajes" %}';
+
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al crear reserva: ' + error.message);
+        }
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,101 @@
+[
+    {
+        "model": "pasajes.linea",
+        "pk": 3,
+        "fields": {
+            "nombre": "Concepción-Santiago Express Mañana",
+            "nombre_empresa": "Pullman Bus",
+            "origen": 4,
+            "destino": 1,
+            "duracion": "06:00:00",
+            "precio_base": "15000.00",
+            "activa": true
+        }
+    },
+    {
+        "model": "pasajes.linea",
+        "pk": 4,
+        "fields": {
+            "nombre": "Concepción-Santiago Tarde",
+            "nombre_empresa": "Tur Bus",
+            "origen": 4,
+            "destino": 1,
+            "duracion": "06:30:00",
+            "precio_base": "16000.00",
+            "activa": true
+        }
+    },
+    {
+        "model": "pasajes.linea",
+        "pk": 5,
+        "fields": {
+            "nombre": "Concepción-Santiago Nocturno",
+            "nombre_empresa": "Condor Bus",
+            "origen": 4,
+            "destino": 1,
+            "duracion": "06:15:00",
+            "precio_base": "14500.00",
+            "activa": true
+        }
+    },
+    {
+        "model": "pasajes.bus",
+        "pk": 3,
+        "fields": {
+            "linea": 3,
+            "numero": "BUS-003",
+            "capacidad": 40,
+            "activo": true
+        }
+    },
+    {
+        "model": "pasajes.bus",
+        "pk": 4,
+        "fields": {
+            "linea": 3,
+            "numero": "BUS-004",
+            "capacidad": 40,
+            "activo": true
+        }
+    },
+    {
+        "model": "pasajes.bus",
+        "pk": 5,
+        "fields": {
+            "linea": 4,
+            "numero": "BUS-005",
+            "capacidad": 40,
+            "activo": true
+        }
+    },
+    {
+        "model": "pasajes.bus",
+        "pk": 6,
+        "fields": {
+            "linea": 4,
+            "numero": "BUS-006",
+            "capacidad": 40,
+            "activo": true
+        }
+    },
+    {
+        "model": "pasajes.bus",
+        "pk": 7,
+        "fields": {
+            "linea": 5,
+            "numero": "BUS-007",
+            "capacidad": 40,
+            "activo": true
+        }
+    },
+    {
+        "model": "pasajes.bus",
+        "pk": 8,
+        "fields": {
+            "linea": 5,
+            "numero": "BUS-008",
+            "capacidad": 40,
+            "activo": true
+        }
+    }
+]

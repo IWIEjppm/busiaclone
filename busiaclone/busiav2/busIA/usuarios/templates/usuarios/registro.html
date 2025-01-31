@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4">Crear Cuenta</h2>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre completo</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email_alternativo" class="form-label">Email alternativo (opcional)</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
+                                <input type="email" class="form-control" id="email_alternativo" name="email_alternativo">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono (opcional)</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                <input type="tel" class="form-control" id="telefono" name="telefono">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password2" class="form-label">Confirmar contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password2" name="password2" required>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-user-plus me-2"></i>Crear Cuenta
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p>¿Ya tienes una cuenta? <a href="{% url 'usuarios:login' %}" class="text-decoration-none">Inicia sesión</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+document.getElementById('registroForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const spinner = submitButton.querySelector('.spinner-border');
+    
+    try {
+        // Validar contraseñas
+        const password = document.getElementById('password').value;
+        const password2 = document.getElementById('password2').value;
+        
+        if (password.length < 8) {
+            await Swal.fire({
+                icon: 'warning',
+                title: 'Contraseña muy corta',
+                text: 'La contraseña debe tener al menos 8 caracteres.',
+                confirmButtonColor: '#0d6efd'
+            });
+            return;
+        }
+        
+        if (password !== password2) {
+            await Swal.fire({
+                icon: 'warning',
+                title: 'Las contraseñas no coinciden',
+                text: 'Por favor, verifica que las contraseñas sean iguales.',
+                confirmButtonColor: '#0d6efd'
+            });
+            return;
+        }
+        
+        // Validar formulario
+        form.classList.add('was-validated');
+        if (!form.checkValidity()) {
+            return;
+        }
+        
+        // Deshabilitar formulario y mostrar spinner
+        submitButton.disabled = true;
+        spinner.classList.remove('d-none');
+        
+        // Enviar datos
+        const response = await fetch('/usuarios/api/registro/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            },
+            body: JSON.stringify({
+                email: document.getElementById('email').value.trim(),
+                password: password,
+                nombre: document.getElementById('nombre').value.trim()
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            // Mostrar mensaje de éxito
+            await Swal.fire({
+                icon: 'success',
+                title: '¡Cuenta creada!',
+                text: 'Te hemos enviado un correo de verificación. Por favor revisa tu bandeja de entrada.',
+                confirmButtonColor: '#0d6efd'
+            });
+            
+            // Redirigir al login
+            window.location.href = '/usuarios/login/';
+        } else {
+            let errorMessage = 'No pudimos crear tu cuenta en este momento.';
+            
+            if (data.error) {
+                if (data.error.includes('email ya está registrado')) {
+                    errorMessage = 'Este correo electrónico ya está registrado. ¿Quieres iniciar sesión?';
+                } else if (data.error.includes('contraseña')) {
+                    errorMessage = 'La contraseña no cumple con los requisitos mínimos de seguridad.';
+                }
+            }
+            
+            await Swal.fire({
+                icon: 'error',
+                title: 'No pudimos completar el registro',
+                text: errorMessage,
+                confirmButtonColor: '#0d6efd',
+                showCancelButton: data.error.includes('email ya está registrado'),
+                cancelButtonText: 'Intentar de nuevo',
+                confirmButtonText: data.error.includes('email ya está registrado') ? 'Ir a iniciar sesión' : 'Entendido'
+            }).then((result) => {
+                if (result.isConfirmed && data.error.includes('email ya está registrado')) {
+                    window.location.href = '/usuarios/login/';
+                }
+            });
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+        await Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'Por favor, intenta nuevamente en unos momentos.',
+            confirmButtonColor: '#0d6efd'
+        });
+    } finally {
+        submitButton.disabled = false;
+        spinner.classList.add('d-none');
+    }
+});
+</script>
+{% endblock %}
+{% endblock %}

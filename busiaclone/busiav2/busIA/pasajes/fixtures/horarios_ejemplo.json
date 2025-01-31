@@ -1,0 +1,102 @@
+[
+    {
+        "model": "pasajes.viaje",
+        "pk": 1,
+        "fields": {
+            "bus": 3,
+            "fecha_salida": "2025-01-29T07:00:00-03:00",
+            "precio": "15000.00",
+            "estado": "programado"
+        }
+    },
+    {
+        "model": "pasajes.viaje",
+        "pk": 2,
+        "fields": {
+            "bus": 4,
+            "fecha_salida": "2025-01-29T09:30:00-03:00",
+            "precio": "15500.00",
+            "estado": "programado"
+        }
+    },
+    {
+        "model": "pasajes.viaje",
+        "pk": 3,
+        "fields": {
+            "bus": 5,
+            "fecha_salida": "2025-01-29T12:00:00-03:00",
+            "precio": "16000.00",
+            "estado": "programado"
+        }
+    },
+    {
+        "model": "pasajes.viaje",
+        "pk": 4,
+        "fields": {
+            "bus": 6,
+            "fecha_salida": "2025-01-29T15:30:00-03:00",
+            "precio": "16000.00",
+            "estado": "programado"
+        }
+    },
+    {
+        "model": "pasajes.viaje",
+        "pk": 5,
+        "fields": {
+            "bus": 7,
+            "fecha_salida": "2025-01-29T19:00:00-03:00",
+            "precio": "14500.00",
+            "estado": "programado"
+        }
+    },
+    {
+        "model": "pasajes.viaje",
+        "pk": 6,
+        "fields": {
+            "bus": 8,
+            "fecha_salida": "2025-01-29T22:30:00-03:00",
+            "precio": "14000.00",
+            "estado": "programado"
+        }
+    },
+    {
+        "model": "pasajes.viaje",
+        "pk": 7,
+        "fields": {
+            "bus": 3,
+            "fecha_salida": "2025-01-30T07:00:00-03:00",
+            "precio": "15000.00",
+            "estado": "programado"
+        }
+    },
+    {
+        "model": "pasajes.viaje",
+        "pk": 8,
+        "fields": {
+            "bus": 4,
+            "fecha_salida": "2025-01-30T09:30:00-03:00",
+            "precio": "15500.00",
+            "estado": "programado"
+        }
+    },
+    {
+        "model": "pasajes.viaje",
+        "pk": 9,
+        "fields": {
+            "bus": 5,
+            "fecha_salida": "2025-01-30T12:00:00-03:00",
+            "precio": "16000.00",
+            "estado": "programado"
+        }
+    },
+    {
+        "model": "pasajes.viaje",
+        "pk": 10,
+        "fields": {
+            "bus": 6,
+            "fecha_salida": "2025-01-30T15:30:00-03:00",
+            "precio": "16000.00",
+            "estado": "programado"
+        }
+    }
+]

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Iniciar Sesión</h2>
+                    
+                    <div id="errorContainer" class="mb-3"></div>
+                    
+                    <!-- Formulario de login -->
+                    <form id="loginForm" novalidate>
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" 
+                                   class="form-control" 
+                                   id="email" 
+                                   name="email" 
+                                   required>
+                            <div class="invalid-feedback">
+                                Por favor, ingresa un correo electrónico válido.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" 
+                                   class="form-control" 
+                                   id="password" 
+                                   name="password" 
+                                   required>
+                            <div class="invalid-feedback">
+                                Por favor, ingresa tu contraseña.
+                            </div>
+                        </div>
+                        
+                        <div class="text-end mb-3">
+                            <a href="/usuarios/recuperar/" class="text-decoration-none">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100">
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            Iniciar Sesión
+                        </button>
+                    </form>
+                    
+                    <div class="text-center mt-3">
+                        <span>¿No tienes una cuenta?</span>
+                        <a href="/usuarios/registro/" class="text-decoration-none">Regístrate aquí</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const spinner = submitButton.querySelector('.spinner-border');
+    const errorContainer = document.getElementById('errorContainer');
+    
+    try {
+        // Validar formulario
+        form.classList.add('was-validated');
+        if (!form.checkValidity()) {
+            return;
+        }
+        
+        // Deshabilitar formulario y mostrar spinner
+        submitButton.disabled = true;
+        spinner.classList.remove('d-none');
+        errorContainer.innerHTML = '';
+        
+        // Enviar petición
+        const response = await fetch('/usuarios/api/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            },
+            body: JSON.stringify({
+                email: document.getElementById('email').value.trim(),
+                password: document.getElementById('password').value
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            // Mostrar mensaje de éxito
+            await Swal.fire({
+                icon: 'success',
+                title: '¡Bienvenido!',
+                text: data.message,
+                timer: 1500,
+                showConfirmButton: false
+            });
+            
+            // Recargar la página para actualizar el estado de autenticación
+            window.location.href = '/';
+        } else {
+            throw new Error(data.error || 'Error al iniciar sesión');
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+        errorContainer.innerHTML = `
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                ${error.message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+    } finally {
+        submitButton.disabled = false;
+        spinner.classList.add('d-none');
+    }
+});
+</script>
+{% endblock %}

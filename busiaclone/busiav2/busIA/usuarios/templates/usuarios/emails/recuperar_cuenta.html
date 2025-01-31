@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0d6efd;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Recuperación de Cuenta</h2>
+        
+        <p>Hola {{ usuario.nombre }},</p>
+        
+        <p>Recibimos una solicitud para recuperar tu cuenta. Si no fuiste tú quien solicitó esto, puedes ignorar este email.</p>
+        
+        <p>Para crear una nueva contraseña, haz clic en el siguiente enlace:</p>
+        
+        <p>
+            <a href="http://{{ domain }}{% url 'usuarios:cambiar_password' %}?token={{ token }}" class="button">
+                Crear Nueva Contraseña
+            </a>
+        </p>
+        
+        <p>Este enlace expirará en 24 horas por seguridad.</p>
+        
+        <div class="footer">
+            <p>Si tienes problemas con el botón, copia y pega este enlace en tu navegador:</p>
+            <p>http://{{ domain }}{% url 'usuarios:cambiar_password' %}?token={{ token }}</p>
+        </div>
+    </div>
+</body>
+</html>

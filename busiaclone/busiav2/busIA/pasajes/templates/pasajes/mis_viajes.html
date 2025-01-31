@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mis Viajes{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">Mis Viajes</h1>
+    
+    {% if reservas %}
+        <div class="row">
+            {% for reserva in reservas %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ reserva.asiento.bus.linea.nombre_empresa }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            {{ reserva.asiento.bus.linea.origen }} → {{ reserva.asiento.bus.linea.destino }}
+                        </h6>
+                        <p class="card-text">
+                            <strong>Fecha de viaje:</strong> {{ reserva.fecha_viaje|date:"d/m/Y" }}<br>
+                            <strong>Hora de salida:</strong> {{ reserva.asiento.bus.viaje_set.first.fecha_salida|date:"H:i" }}<br>
+                            <strong>Bus:</strong> {{ reserva.asiento.bus.numero }}<br>
+                            <strong>Asiento:</strong> 
+                            {% with numero=reserva.asiento.numero|stringformat:"02d" %}
+                                {{ numero }}
+                                {% if reserva.asiento.tipo == 'premium' %}
+                                    <span class="badge bg-warning">Premium</span>
+                                {% endif %}
+                            {% endwith %}
+                            <br>
+                            <strong>Precio:</strong> ${{ reserva.precio|floatformat:0|stringformat:"s"|slice:"-3:"|default:"0"|add:","|add:reserva.precio|floatformat:0|stringformat:"s"|slice:"-3:"|default:"0" }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            No tienes viajes reservados. 
+            <a href="{% url 'pasajes:comprar' %}" class="alert-link">¡Compra tu primer pasaje!</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

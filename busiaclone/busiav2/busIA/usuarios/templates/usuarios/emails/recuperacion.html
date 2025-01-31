@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #0d6efd;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .code {
+            font-family: monospace;
+            font-size: 24px;
+            text-align: center;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin: 20px 0;
+            letter-spacing: 2px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>BusIA</h1>
+        </div>
+        
+        <div class="content">
+            <h2>Hola {{ usuario.nombre }},</h2>
+            
+            <p>Hemos recibido una solicitud para restablecer la contraseña de tu cuenta en BusIA.</p>
+            
+            <p>Tu código de verificación es:</p>
+            
+            <div class="code">
+                {{ codigo }}
+            </div>
+            
+            <p>Por razones de seguridad, este código expirará en 2 minutos.</p>
+            
+            <p>Si no solicitaste este cambio, puedes ignorar este correo. Tu contraseña actual seguirá siendo válida.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
+            <p>BusIA - Tu plataforma de viajes</p>
+        </div>
+    </div>
+</body>
+</html>

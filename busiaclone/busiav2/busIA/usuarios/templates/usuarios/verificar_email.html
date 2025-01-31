@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Verificar Email{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Verificar Email</h4>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                    <div class="messages mb-4">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <p class="mb-4">
+                        Te hemos enviado un código de verificación a tu correo electrónico.
+                        Por favor, ingresa el código para verificar tu cuenta.
+                    </p>
+                    
+                    <form method="post" action="{% url 'usuarios:verificar_email' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="codigo" class="form-label">Código de Verificación</label>
+                            <input type="text" class="form-control" id="codigo" name="codigo" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100">
+                            Verificar Email
+                        </button>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p class="mb-0">¿No recibiste el código?</p>
+                        <a href="{% url 'usuarios:reenviar_codigo' %}" class="text-decoration-none">
+                            Reenviar código
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

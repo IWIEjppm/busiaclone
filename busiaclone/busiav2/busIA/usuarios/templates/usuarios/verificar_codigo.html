@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Verificar Código{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4">Verificar Código</h2>
+                    <p class="text-center text-muted mb-4">Por favor, ingresa el código de 6 dígitos que enviamos a tu correo electrónico.</p>
+                    
+                    {% if messages %}
+                    <div class="mb-4">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" name="email" required 
+                                       placeholder="Ingresa tu email">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="codigo" class="form-label">Código de Verificación</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <input type="text" class="form-control" id="codigo" name="codigo" required 
+                                       pattern="[0-9]{6}" maxlength="6"
+                                       placeholder="Ingresa el código de 6 dígitos">
+                            </div>
+                            <div class="form-text">
+                                El código expirará en 2 minutos por razones de seguridad.
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-check me-2"></i>Verificar Código
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p>¿No recibiste el código? <a href="{% url 'usuarios:recuperar_cuenta' %}" class="text-decoration-none">Solicitar nuevo código</a></p>
+                        <p><a href="{% url 'usuarios:login' %}" class="text-muted"><i class="fas fa-arrow-left me-2"></i>Volver al inicio de sesión</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

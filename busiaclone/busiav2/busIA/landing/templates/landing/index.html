@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Bienvenido{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="mt-5">
+                <h1 class="display-4 mb-4">Bienvenido</h1>
+                <p class="lead mb-4">Seleccione su tipo de acceso</p>
+                <div class="d-grid gap-3">
+                    <a href="{% url 'usuarios:login' %}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-user me-2"></i>
+                        Acceso Usuario
+                    </a>
+                    <a href="/empresas/login/" class="btn btn-primary btn-lg">
+                        <i class="fas fa-building me-2"></i>
+                        Acceso Empresa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

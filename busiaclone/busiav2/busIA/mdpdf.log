@@ -1,0 +1,287 @@
+    INFO: 2025-01-29 10:46:44,952:               log.py:   20: Logging to C:\Users\jpobl\Desktop\busIA\busiav2\busIA\mdpdf.log
+   DEBUG: 2025-01-29 10:46:44,952:               cli.py:  103: documentacion_tecnica.md
+    INFO: 2025-01-29 10:46:44,953:         converter.py:   14: documentacion_tecnica.md
+   DEBUG: 2025-01-29 10:46:44,962:      pdf_renderer.py:  470: printSegment: Documentación Técnica Detallada - BusIA
+   DEBUG: 2025-01-29 10:46:44,965:      pdf_renderer.py:  470: printSegment: 1. Stack Tecnológico
+   DEBUG: 2025-01-29 10:46:44,966:      pdf_renderer.py:  470: printSegment: 1.1 Backend
+   DEBUG: 2025-01-29 10:46:44,967:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,968:      pdf_renderer.py:  470: printSegment: Framework Principal
+   DEBUG: 2025-01-29 10:46:44,971:      pdf_renderer.py:  470: printSegment: : Django 5.0
+   DEBUG: 2025-01-29 10:46:44,974:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,975:      pdf_renderer.py:  470: printSegment: Framework web de alto nivel basado en Python
+   DEBUG: 2025-01-29 10:46:44,976:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,977:      pdf_renderer.py:  470: printSegment: Sigue el patrón arquitectónico MVT (Model-View-Template)
+   DEBUG: 2025-01-29 10:46:44,978:      pdf_renderer.py:  470: printSegment: 1.2 APIs y REST Framework
+   DEBUG: 2025-01-29 10:46:44,978:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,979:      pdf_renderer.py:  470: printSegment: Django REST Framework
+   DEBUG: 2025-01-29 10:46:44,980:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,981:      pdf_renderer.py:  470: printSegment: Utilizado para crear APIs RESTful
+   DEBUG: 2025-01-29 10:46:44,982:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,982:      pdf_renderer.py:  470: printSegment: Incluye serialización de datos
+   DEBUG: 2025-01-29 10:46:44,983:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,984:      pdf_renderer.py:  470: printSegment: Sistema de autenticación y permisos
+   DEBUG: 2025-01-29 10:46:44,984:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,985:      pdf_renderer.py:  470: printSegment: JWT (JSON Web Tokens)
+   DEBUG: 2025-01-29 10:46:44,986:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,986:      pdf_renderer.py:  470: printSegment: Implementado con 
+   DEBUG: 2025-01-29 10:46:44,988:      pdf_renderer.py:  470: printSegment: rest_framework_simplejwt
+   DEBUG: 2025-01-29 10:46:44,990:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,991:      pdf_renderer.py:  470: printSegment: Utilizado para autenticación segura
+   DEBUG: 2025-01-29 10:46:44,992:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,993:      pdf_renderer.py:  470: printSegment: Gestión de tokens de acceso y refresco
+   DEBUG: 2025-01-29 10:46:44,993:      pdf_renderer.py:  470: printSegment: 1.3 Base de Datos
+   DEBUG: 2025-01-29 10:46:44,994:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,995:      pdf_renderer.py:  470: printSegment: SQLite
+   DEBUG: 2025-01-29 10:46:44,996:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,997:      pdf_renderer.py:  470: printSegment: Sistema de base de datos relacional
+   DEBUG: 2025-01-29 10:46:44,997:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:44,998:      pdf_renderer.py:  470: printSegment: Utilizado en desarrollo
+   DEBUG: 2025-01-29 10:46:44,999:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,000:      pdf_renderer.py:  470: printSegment: Ideal para aplicaciones de tamaño medio
+   DEBUG: 2025-01-29 10:46:45,001:      pdf_renderer.py:  470: printSegment: 1.4 Frontend
+   DEBUG: 2025-01-29 10:46:45,001:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,002:      pdf_renderer.py:  470: printSegment: HTML5/CSS3
+   DEBUG: 2025-01-29 10:46:45,003:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,004:      pdf_renderer.py:  470: printSegment: Estructura y estilos base
+   DEBUG: 2025-01-29 10:46:45,005:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,005:      pdf_renderer.py:  470: printSegment: Templates de Django
+   DEBUG: 2025-01-29 10:46:45,006:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,007:      pdf_renderer.py:  470: printSegment: JavaScript
+   DEBUG: 2025-01-29 10:46:45,008:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,009:      pdf_renderer.py:  470: printSegment: Interactividad del lado del cliente
+   DEBUG: 2025-01-29 10:46:45,010:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,010:      pdf_renderer.py:  470: printSegment: Manejo de formularios
+   DEBUG: 2025-01-29 10:46:45,011:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,012:      pdf_renderer.py:  470: printSegment: Validaciones en tiempo real
+   DEBUG: 2025-01-29 10:46:45,013:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,014:      pdf_renderer.py:  470: printSegment: Bootstrap
+   DEBUG: 2025-01-29 10:46:45,014:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,015:      pdf_renderer.py:  470: printSegment: Framework CSS para diseño responsivo
+   DEBUG: 2025-01-29 10:46:45,016:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,017:      pdf_renderer.py:  470: printSegment: Componentes predefinidos
+   DEBUG: 2025-01-29 10:46:45,018:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,018:      pdf_renderer.py:  470: printSegment: Sistema de grid
+   DEBUG: 2025-01-29 10:46:45,019:      pdf_renderer.py:  470: printSegment: 1.5 Seguridad
+   DEBUG: 2025-01-29 10:46:45,020:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,021:      pdf_renderer.py:  470: printSegment: CORS (Cross-Origin Resource Sharing)
+   DEBUG: 2025-01-29 10:46:45,022:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,023:      pdf_renderer.py:  470: printSegment: Implementado con 
+   DEBUG: 2025-01-29 10:46:45,024:      pdf_renderer.py:  470: printSegment: django-cors-headers
+   DEBUG: 2025-01-29 10:46:45,025:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,025:      pdf_renderer.py:  470: printSegment: Control de acceso HTTP
+   DEBUG: 2025-01-29 10:46:45,026:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,027:      pdf_renderer.py:  470: printSegment: Configuración de dominios permitidos
+   DEBUG: 2025-01-29 10:46:45,027:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,028:      pdf_renderer.py:  470: printSegment: CSRF Protection
+   DEBUG: 2025-01-29 10:46:45,029:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,030:      pdf_renderer.py:  470: printSegment: Protección contra ataques Cross-Site Request Forgery
+   DEBUG: 2025-01-29 10:46:45,031:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,031:      pdf_renderer.py:  470: printSegment: Tokens CSRF en formularios
+   DEBUG: 2025-01-29 10:46:45,032:      pdf_renderer.py:  470: printSegment: 2. Dependencias Principales
+   DEBUG: 2025-01-29 10:46:45,033:      pdf_renderer.py:  470: printSegment: 2.1 Django y Extensiones
+   DEBUG: 2025-01-29 10:46:45,034:      pdf_renderer.py:  470: printSegment: django==5.0                    # Framework web principal
+   DEBUG: 2025-01-29 10:46:45,035:      pdf_renderer.py:  470: printSegment: djangorestframework           # API REST framework
+   DEBUG: 2025-01-29 10:46:45,036:      pdf_renderer.py:  470: printSegment: djangorestframework-simplejwt # Autenticación JWT
+   DEBUG: 2025-01-29 10:46:45,037:      pdf_renderer.py:  470: printSegment: django-cors-headers          # Manejo de CORS
+   DEBUG: 2025-01-29 10:46:45,038:      pdf_renderer.py:  470: printSegment: 2.2 Utilidades y Herramientas
+   DEBUG: 2025-01-29 10:46:45,039:      pdf_renderer.py:  470: printSegment: Pillow                      # Procesamiento de imágenes
+   DEBUG: 2025-01-29 10:46:45,040:      pdf_renderer.py:  470: printSegment: python-dateutil            # Manejo avanzado de fechas
+   DEBUG: 2025-01-29 10:46:45,041:      pdf_renderer.py:  470: printSegment: 3. Estructura de Aplicaciones
+   DEBUG: 2025-01-29 10:46:45,042:      pdf_renderer.py:  470: printSegment: 3.1 Módulo de Usuarios (usuarios)
+   DEBUG: 2025-01-29 10:46:45,043:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,043:      pdf_renderer.py:  470: printSegment: Gestión de autenticación
+   DEBUG: 2025-01-29 10:46:45,044:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,045:      pdf_renderer.py:  470: printSegment: Perfiles de usuario
+   DEBUG: 2025-01-29 10:46:45,046:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,046:      pdf_renderer.py:  470: printSegment: Registro y login
+   DEBUG: 2025-01-29 10:46:45,047:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,048:      pdf_renderer.py:  470: printSegment: Recuperación de contraseña
+   DEBUG: 2025-01-29 10:46:45,049:      pdf_renderer.py:  470: printSegment: 3.2 Módulo de Pasajes (pasajes)
+   DEBUG: 2025-01-29 10:46:45,050:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,051:      pdf_renderer.py:  470: printSegment: Sistema de reservas
+   DEBUG: 2025-01-29 10:46:45,051:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,052:      pdf_renderer.py:  470: printSegment: Gestión de tickets
+   DEBUG: 2025-01-29 10:46:45,053:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,054:      pdf_renderer.py:  470: printSegment: Historial de viajes
+   DEBUG: 2025-01-29 10:46:45,054:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,055:      pdf_renderer.py:  470: printSegment: Procesamiento de pagos
+   DEBUG: 2025-01-29 10:46:45,056:      pdf_renderer.py:  470: printSegment: 3.3 Módulo de Empresas (bus
+   DEBUG: 2025-01-29 10:46:45,057:      pdf_renderer.py:  470: printSegment: _
+   DEBUG: 2025-01-29 10:46:45,058:      pdf_renderer.py:  470: printSegment: empresas)
+   DEBUG: 2025-01-29 10:46:45,059:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,060:      pdf_renderer.py:  470: printSegment: Gestión de empresas de transporte
+   DEBUG: 2025-01-29 10:46:45,060:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,061:      pdf_renderer.py:  470: printSegment: Administración de flotas
+   DEBUG: 2025-01-29 10:46:45,062:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,063:      pdf_renderer.py:  470: printSegment: Rutas y horarios
+   DEBUG: 2025-01-29 10:46:45,064:      pdf_renderer.py:  470: printSegment: 3.4 Landing Page (landing)
+   DEBUG: 2025-01-29 10:46:45,065:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,066:      pdf_renderer.py:  470: printSegment: Página principal
+   DEBUG: 2025-01-29 10:46:45,067:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,067:      pdf_renderer.py:  470: printSegment: Información del servicio
+   DEBUG: 2025-01-29 10:46:45,068:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,069:      pdf_renderer.py:  470: printSegment: Contacto
+   DEBUG: 2025-01-29 10:46:45,069:      pdf_renderer.py:  470: printSegment: 4. APIs y Endpoints
+   DEBUG: 2025-01-29 10:46:45,070:      pdf_renderer.py:  470: printSegment: 4.1 API de Usuarios
+   DEBUG: 2025-01-29 10:46:45,071:      pdf_renderer.py:  470: printSegment: POST /api/usuarios/registro/    # Registro de usuarios
+   DEBUG: 2025-01-29 10:46:45,073:      pdf_renderer.py:  470: printSegment: POST /api/usuarios/login/       # Inicio de sesión
+   DEBUG: 2025-01-29 10:46:45,074:      pdf_renderer.py:  470: printSegment: GET  /api/usuarios/perfil/      # Obtener perfil
+   DEBUG: 2025-01-29 10:46:45,075:      pdf_renderer.py:  470: printSegment: PUT  /api/usuarios/perfil/      # Actualizar perfil
+   DEBUG: 2025-01-29 10:46:45,075:      pdf_renderer.py:  470: printSegment: 4.2 API de Pasajes
+   DEBUG: 2025-01-29 10:46:45,076:      pdf_renderer.py:  470: printSegment: GET  /api/pasajes/             # Listar pasajes disponibles
+   DEBUG: 2025-01-29 10:46:45,077:      pdf_renderer.py:  470: printSegment: POST /api/pasajes/reserva/     # Crear reserva
+   DEBUG: 2025-01-29 10:46:45,078:      pdf_renderer.py:  470: printSegment: GET  /api/pasajes/historial/   # Historial de viajes
+   DEBUG: 2025-01-29 10:46:45,079:      pdf_renderer.py:  470: printSegment: 4.3 API de Empresas
+   DEBUG: 2025-01-29 10:46:45,080:      pdf_renderer.py:  470: printSegment: GET  /api/empresas/            # Listar empresas
+   DEBUG: 2025-01-29 10:46:45,081:      pdf_renderer.py:  470: printSegment: GET  /api/empresas/rutas/      # Obtener rutas
+   DEBUG: 2025-01-29 10:46:45,082:      pdf_renderer.py:  470: printSegment: POST /api/empresas/horarios/   # Gestionar horarios
+   DEBUG: 2025-01-29 10:46:45,083:      pdf_renderer.py:  470: printSegment: 5. Configuraciones
+   DEBUG: 2025-01-29 10:46:45,084:      pdf_renderer.py:  470: printSegment: 5.1 Configuración de Correo
+   DEBUG: 2025-01-29 10:46:45,084:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,086:      pdf_renderer.py:  470: printSegment: Sistema de correo electrónico configurado
+   DEBUG: 2025-01-29 10:46:45,087:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,088:      pdf_renderer.py:  470: printSegment: Notificaciones automáticas
+   DEBUG: 2025-01-29 10:46:45,089:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,090:      pdf_renderer.py:  470: printSegment: Confirmaciones de reserva
+   DEBUG: 2025-01-29 10:46:45,091:      pdf_renderer.py:  470: printSegment: 5.2 Configuración de Logging
+   DEBUG: 2025-01-29 10:46:45,092:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,093:      pdf_renderer.py:  470: printSegment: Registro detallado de actividades
+   DEBUG: 2025-01-29 10:46:45,093:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,094:      pdf_renderer.py:  470: printSegment: Logs separados por módulos
+   DEBUG: 2025-01-29 10:46:45,095:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,097:      pdf_renderer.py:  470: printSegment: Niveles de logging configurables
+   DEBUG: 2025-01-29 10:46:45,098:      pdf_renderer.py:  470: printSegment: 5.3 Configuración de Seguridad
+   DEBUG: 2025-01-29 10:46:45,099:      pdf_renderer.py:  470: printSegment: # Configuraciones JWT
+   DEBUG: 2025-01-29 10:46:45,100:      pdf_renderer.py:  470: printSegment: SIMPLE_JWT = {
+   DEBUG: 2025-01-29 10:46:45,101:      pdf_renderer.py:  470: printSegment:     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+   DEBUG: 2025-01-29 10:46:45,102:      pdf_renderer.py:  470: printSegment:     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+   DEBUG: 2025-01-29 10:46:45,104:      pdf_renderer.py:  470: printSegment:     'ROTATE_REFRESH_TOKENS': False,
+   DEBUG: 2025-01-29 10:46:45,104:      pdf_renderer.py:  470: printSegment: }
+   DEBUG: 2025-01-29 10:46:45,106:      pdf_renderer.py:  470: printSegment: # Configuraciones REST Framework
+   DEBUG: 2025-01-29 10:46:45,108:      pdf_renderer.py:  470: printSegment: REST_FRAMEWORK = {
+   DEBUG: 2025-01-29 10:46:45,109:      pdf_renderer.py:  470: printSegment:     'DEFAULT_AUTHENTICATION_CLASSES': [
+   DEBUG: 2025-01-29 10:46:45,110:      pdf_renderer.py:  470: printSegment:        
+   DEBUG: 2025-01-29 10:46:45,111:      pdf_renderer.py:  470: printSegment: 'rest_framework_simplejwt.authentication.JWTAuthentication',
+   DEBUG: 2025-01-29 10:46:45,112:      pdf_renderer.py:  470: printSegment:         'rest_framework.authentication.SessionAuthentication',
+   DEBUG: 2025-01-29 10:46:45,113:      pdf_renderer.py:  470: printSegment:     ],
+   DEBUG: 2025-01-29 10:46:45,113:      pdf_renderer.py:  470: printSegment: }
+   DEBUG: 2025-01-29 10:46:45,114:      pdf_renderer.py:  470: printSegment: 6. Herramientas de Desarrollo
+   DEBUG: 2025-01-29 10:46:45,115:      pdf_renderer.py:  470: printSegment: 6.1 Entorno Virtual
+   DEBUG: 2025-01-29 10:46:45,116:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,116:      pdf_renderer.py:  470: printSegment: Virtualenv para aislamiento de dependencias
+   DEBUG: 2025-01-29 10:46:45,117:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,118:      pdf_renderer.py:  470: printSegment: Requirements.txt para gestión de paquetes
+   DEBUG: 2025-01-29 10:46:45,119:      pdf_renderer.py:  470: printSegment: 6.2 Herramientas de Debug
+   DEBUG: 2025-01-29 10:46:45,120:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,121:      pdf_renderer.py:  470: printSegment: Django Debug Toolbar
+   DEBUG: 2025-01-29 10:46:45,121:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,122:      pdf_renderer.py:  470: printSegment: Logging configurado
+   DEBUG: 2025-01-29 10:46:45,123:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,123:      pdf_renderer.py:  470: printSegment: Console debugging
+   DEBUG: 2025-01-29 10:46:45,124:      pdf_renderer.py:  470: printSegment: 7. Seguridad Implementada
+   DEBUG: 2025-01-29 10:46:45,125:      pdf_renderer.py:  470: printSegment: 7.1 Autenticación
+   DEBUG: 2025-01-29 10:46:45,125:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,126:      pdf_renderer.py:  470: printSegment: Sistema JWT para APIs
+   DEBUG: 2025-01-29 10:46:45,127:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,128:      pdf_renderer.py:  470: printSegment: Sesiones de Django para web
+   DEBUG: 2025-01-29 10:46:45,128:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,129:      pdf_renderer.py:  470: printSegment: Tokens de acceso y refresco
+   DEBUG: 2025-01-29 10:46:45,130:      pdf_renderer.py:  470: printSegment: 7.2 Autorización
+   DEBUG: 2025-01-29 10:46:45,130:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,131:      pdf_renderer.py:  470: printSegment: Permisos basados en roles
+   DEBUG: 2025-01-29 10:46:45,132:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,132:      pdf_renderer.py:  470: printSegment: Decoradores de permisos
+   DEBUG: 2025-01-29 10:46:45,133:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,134:      pdf_renderer.py:  470: printSegment: Middleware de autenticación
+   DEBUG: 2025-01-29 10:46:45,135:      pdf_renderer.py:  470: printSegment: 7.3 Protección de Datos
+   DEBUG: 2025-01-29 10:46:45,136:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,137:      pdf_renderer.py:  470: printSegment: Encriptación de contraseñas
+   DEBUG: 2025-01-29 10:46:45,137:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,138:      pdf_renderer.py:  470: printSegment: Sanitización de datos
+   DEBUG: 2025-01-29 10:46:45,139:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,140:      pdf_renderer.py:  470: printSegment: Validación de formularios
+   DEBUG: 2025-01-29 10:46:45,141:      pdf_renderer.py:  470: printSegment: 8. Mantenimiento y Escalabilidad
+   DEBUG: 2025-01-29 10:46:45,142:      pdf_renderer.py:  470: printSegment: 8.1 Backup y Recuperación
+   DEBUG: 2025-01-29 10:46:45,143:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,144:      pdf_renderer.py:  470: printSegment: Sistema de respaldo de base de datos
+   DEBUG: 2025-01-29 10:46:45,145:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,146:      pdf_renderer.py:  470: printSegment: Logs de actividad
+   DEBUG: 2025-01-29 10:46:45,146:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,148:      pdf_renderer.py:  470: printSegment: Procedimientos de recuperación
+   DEBUG: 2025-01-29 10:46:45,148:      pdf_renderer.py:  470: printSegment: 8.2 Monitoreo
+   DEBUG: 2025-01-29 10:46:45,149:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,150:      pdf_renderer.py:  470: printSegment: Logging de errores
+   DEBUG: 2025-01-29 10:46:45,151:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,152:      pdf_renderer.py:  470: printSegment: Monitoreo de rendimiento
+   DEBUG: 2025-01-29 10:46:45,152:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,153:      pdf_renderer.py:  470: printSegment: Alertas configuradas
+   DEBUG: 2025-01-29 10:46:45,154:      pdf_renderer.py:  470: printSegment: 8.3 Escalabilidad
+   DEBUG: 2025-01-29 10:46:45,155:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,156:      pdf_renderer.py:  470: printSegment: Arquitectura modular
+   DEBUG: 2025-01-29 10:46:45,156:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,157:      pdf_renderer.py:  470: printSegment: Cacheo implementado
+   DEBUG: 2025-01-29 10:46:45,157:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,158:      pdf_renderer.py:  470: printSegment: Optimización de consultas
+   DEBUG: 2025-01-29 10:46:45,159:      pdf_renderer.py:  470: printSegment: 9. Integración y Despliegue
+   DEBUG: 2025-01-29 10:46:45,160:      pdf_renderer.py:  470: printSegment: 9.1 Control de Versiones
+   DEBUG: 2025-01-29 10:46:45,160:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,161:      pdf_renderer.py:  470: printSegment: Git para control de versiones
+   DEBUG: 2025-01-29 10:46:45,162:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,163:      pdf_renderer.py:  470: printSegment: Branches para desarrollo
+   DEBUG: 2025-01-29 10:46:45,163:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,164:      pdf_renderer.py:  470: printSegment: Sistema de merge requests
+   DEBUG: 2025-01-29 10:46:45,165:      pdf_renderer.py:  470: printSegment: 9.2 Testing
+   DEBUG: 2025-01-29 10:46:45,165:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,166:      pdf_renderer.py:  470: printSegment: Tests unitarios
+   DEBUG: 2025-01-29 10:46:45,167:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,168:      pdf_renderer.py:  470: printSegment: Tests de integración
+   DEBUG: 2025-01-29 10:46:45,169:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,169:      pdf_renderer.py:  470: printSegment: Cobertura de código
+   DEBUG: 2025-01-29 10:46:45,170:      pdf_renderer.py:  470: printSegment: 9.3 Despliegue
+   DEBUG: 2025-01-29 10:46:45,171:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,171:      pdf_renderer.py:  470: printSegment: Guía de despliegue
+   DEBUG: 2025-01-29 10:46:45,172:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,173:      pdf_renderer.py:  470: printSegment: Configuraciones de producción
+   DEBUG: 2025-01-29 10:46:45,173:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-01-29 10:46:45,174:      pdf_renderer.py:  470: printSegment: Scripts de automatización
+   DEBUG: 2025-01-29 10:46:45,176:      pdf_renderer.py:  470: printSegment: Documentación generada el 29 de enero de 2025
+   DEBUG: 2025-01-29 10:46:45,178:      pdf_renderer.py:  470: printSegment:  
+   DEBUG: 2025-01-29 10:46:45,179:      pdf_renderer.py:  470: printSegment: Versión 1.0
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 0, [1, 'Documentación Técnica Detallada - BusIA', 1, 68.0]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 1, [2, '1. Stack Tecnológico', 1, 106.0]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 2, [3, '1.1 Backend', 1, 139.20000000000002]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 3, [3, '1.2 APIs y REST Framework', 1, 228.00000000000003]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 4, [3, '1.3 Base de Datos', 1, 388.8]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 5, [3, '1.4 Frontend', 1, 489.59999999999997]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 6, [3, '1.5 Seguridad', 1, 698.4]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 7, [2, '2. Dependencias Principales', 2, 206.8]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 8, [3, '2.1 Django y Extensiones', 2, 240.00000000000003]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 9, [3, '2.2 Utilidades y Herramientas', 2, 328.8]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 10, [2, '3. Estructura de Aplicaciones', 2, 394.0]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 11, [3, '3.1 Módulo de Usuarios (usuarios)', 2, 427.2]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 12, [3, '3.2 Módulo de Pasajes (pasajes)', 2, 515.9999999999999]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 13, [3, '3.3 Módulo de Empresas (bus', 2, 604.7999999999998]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 14, [3, '3.4 Landing Page (landing)', 2, 681.5999999999998]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 15, [2, '4. APIs y Endpoints', 3, 116.80000000000001]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 16, [3, '4.1 API de Usuarios', 3, 150.00000000000003]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 17, [3, '4.2 API de Pasajes', 3, 238.80000000000004]
+   DEBUG: 2025-01-29 10:46:45,180:      pdf_renderer.py:   53: 18, [3, '4.3 API de Empresas', 3, 315.6]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 19, [2, '5. Configuraciones', 3, 392.8]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 20, [3, '5.1 Configuración de Correo', 3, 426.0]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 21, [3, '5.2 Configuración de Logging', 3, 502.79999999999995]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 22, [3, '5.3 Configuración de Seguridad', 3, 579.5999999999999]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 23, [2, '6. Herramientas de Desarrollo', 4, 140.8]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 24, [3, '6.1 Entorno Virtual', 4, 174.00000000000003]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 25, [3, '6.2 Herramientas de Debug', 4, 238.80000000000004]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 26, [2, '7. Seguridad Implementada', 4, 316.00000000000006]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 27, [3, '7.1 Autenticación', 4, 349.20000000000005]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 28, [3, '7.2 Autorización', 4, 426.0]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 29, [3, '7.3 Protección de Datos', 4, 502.79999999999995]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 30, [2, '8. Mantenimiento y Escalabilidad', 4, 579.9999999999999]
+   DEBUG: 2025-01-29 10:46:45,181:      pdf_renderer.py:   53: 31, [3, '8.1 Backup y Recuperación', 4, 613.1999999999998]
+   DEBUG: 2025-01-29 10:46:45,182:      pdf_renderer.py:   53: 32, [3, '8.2 Monitoreo', 4, 689.9999999999998]
+   DEBUG: 2025-01-29 10:46:45,182:      pdf_renderer.py:   53: 33, [3, '8.3 Escalabilidad', 5, 128.4]
+   DEBUG: 2025-01-29 10:46:45,182:      pdf_renderer.py:   53: 34, [2, '9. Integración y Despliegue', 5, 205.60000000000002]
+   DEBUG: 2025-01-29 10:46:45,182:      pdf_renderer.py:   53: 35, [3, '9.1 Control de Versiones', 5, 238.80000000000004]
+   DEBUG: 2025-01-29 10:46:45,182:      pdf_renderer.py:   53: 36, [3, '9.2 Testing', 5, 315.6]
+   DEBUG: 2025-01-29 10:46:45,182:      pdf_renderer.py:   53: 37, [3, '9.3 Despliegue', 5, 392.4]

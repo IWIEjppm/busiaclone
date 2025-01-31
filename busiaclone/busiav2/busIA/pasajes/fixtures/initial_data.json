@@ -1,0 +1,74 @@
+[
+    {
+        "model": "pasajes.pais",
+        "pk": 1,
+        "fields": {
+            "nombre": "Chile",
+            "codigo": "CL"
+        }
+    },
+    {
+        "model": "pasajes.region",
+        "pk": 1,
+        "fields": {
+            "nombre": "Región Metropolitana",
+            "pais": 1
+        }
+    },
+    {
+        "model": "pasajes.region",
+        "pk": 2,
+        "fields": {
+            "nombre": "Región de Valparaíso",
+            "pais": 1
+        }
+    },
+    {
+        "model": "pasajes.region",
+        "pk": 3,
+        "fields": {
+            "nombre": "Región del Biobío",
+            "pais": 1
+        }
+    },
+    {
+        "model": "pasajes.ciudad",
+        "pk": 1,
+        "fields": {
+            "nombre": "Santiago",
+            "region": 1,
+            "latitud": -33.4489,
+            "longitud": -70.6693
+        }
+    },
+    {
+        "model": "pasajes.ciudad",
+        "pk": 2,
+        "fields": {
+            "nombre": "Valparaíso",
+            "region": 2,
+            "latitud": -33.0472,
+            "longitud": -71.6127
+        }
+    },
+    {
+        "model": "pasajes.ciudad",
+        "pk": 3,
+        "fields": {
+            "nombre": "Viña del Mar",
+            "region": 2,
+            "latitud": -33.0246,
+            "longitud": -71.5518
+        }
+    },
+    {
+        "model": "pasajes.ciudad",
+        "pk": 4,
+        "fields": {
+            "nombre": "Concepción",
+            "region": 3,
+            "latitud": -36.8270,
+            "longitud": -73.0498
+        }
+    }
+]
